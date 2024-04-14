@@ -3,6 +3,7 @@ package Netflix;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +17,7 @@ public class Netflix_Landing {
         driver.get("https://www.netflix.com");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
-        // Test case for Accepting cookies
+        // TC: for Accepting cookies
         WebElement cookies = driver.findElement(By
                 .id("onetrust-accept-btn-handler"));
         cookies.click();
@@ -40,6 +41,20 @@ public class Netflix_Landing {
                 .xpath(
                         "/html/body/div[1]/div/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/form/div/button"));
         getStartedElement.click();
+
+        // TC: FAQ's
+        // We need to scroll down to the FAQ section
+        WebElement faqElement = driver.findElement(By
+                .id("button--nmhp-card-faq-accordion--0"));
+        int elementPositionY = faqElement.getLocation().getY();
+
+        JavascriptExecutor scrollDownExecutor = (JavascriptExecutor) driver;
+
+        // Dynamic position locator
+        scrollDownExecutor.executeScript("window.scrollBy(0, arguments[0])", elementPositionY);
+        faqElement.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        faqElement.click(); // To close the faq
 
     }
 }
