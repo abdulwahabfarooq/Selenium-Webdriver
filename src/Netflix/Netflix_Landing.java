@@ -32,7 +32,7 @@ public class Netflix_Landing {
         clickElement.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
-        // TC: Email input field
+        // TC: Email input field + Renew Membership
         WebElement emailElement = driver.findElement(By
                 .name("email"));
         emailElement.sendKeys("abdulwahabfarooq11c@gmail.com");
@@ -40,5 +40,6 @@ public class Netflix_Landing {
                 .xpath(
                         "/html/body/div[1]/div/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/form/div/button"));
         getStartedElement.click();
+
     }
 }
