@@ -21,7 +21,7 @@ public class Netflix_Landing {
                 .id("onetrust-accept-btn-handler"));
         cookies.click();
 
-        // TC: Language change
+        // TC: Language change: By default its English
         WebElement dropdownElement = driver.findElement(By
                 .xpath(
                         "/html/body/div[1]/div/div/div/div[1]/header/div/div/div[2]/div/div/div[1]/span/div/div/select"));
@@ -31,7 +31,14 @@ public class Netflix_Landing {
                 .xpath("/html/body/div[1]/div/div/div/div[1]/header/div/div/div[2]/div/div/div[1]/span/div/div/select"));
         clickElement.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        driver.quit();
 
+        // TC: Email input field
+        WebElement emailElement = driver.findElement(By
+                .name("email"));
+        emailElement.sendKeys("abdulwahabfarooq11c@gmail.com");
+        WebElement getStartedElement = driver.findElement(By
+                .xpath(
+                        "/html/body/div[1]/div/div/div/div[2]/div[1]/div[2]/div[1]/div/div[1]/form/div/button"));
+        getStartedElement.click();
     }
 }
